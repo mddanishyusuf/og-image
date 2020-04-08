@@ -5,9 +5,12 @@ import { ParsedRequest, Theme } from './types';
 export function parseRequest(req: IncomingMessage) {
 	console.log('HTTP ' + req.url);
 	const { pathname, query } = parse(req.url || '/', true);
-	const { fontSize, images, widths, heights, theme, md } = query || {};
+	const { fontSize, images, widths, heights, theme, md, imageType } = query || {};
 
 	if (Array.isArray(fontSize)) {
+		throw new Error('Expected a single fontSize');
+	}
+	if (Array.isArray(imageType)) {
 		throw new Error('Expected a single fontSize');
 	}
 	if (Array.isArray(theme)) {
@@ -35,6 +38,7 @@ export function parseRequest(req: IncomingMessage) {
 		images: getArray(images),
 		widths: getArray(widths),
 		heights: getArray(heights),
+		imageType: imageType || 'ig_post',
 	};
 	parsedRequest.images = getDefaultImages(parsedRequest.images, parsedRequest.theme);
 	return parsedRequest;
@@ -53,6 +57,6 @@ function getDefaultImages(images: string[], theme: Theme): string[] {
 		return images;
 	}
 	return theme === 'light'
-		? ['https://raw.githubusercontent.com/mddanishyusuf/og-image/master/api/images/wce-icon.png']
-		: ['https://raw.githubusercontent.com/mddanishyusuf/og-image/master/api/images/wce-icon.png'];
+		? ['https://assets.zeit.co/image/upload/front/assets/design/zeit-black-triangle.svg']
+		: ['https://assets.zeit.co/image/upload/front/assets/design/zeit-white-triangle.svg'];
 }
