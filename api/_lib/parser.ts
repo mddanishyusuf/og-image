@@ -38,7 +38,7 @@ export function parseRequest(req: IncomingMessage) {
 		images: getArray(images),
 		widths: getArray(widths),
 		heights: getArray(heights),
-		imageType: imageType || 'ig_post',
+		imageType: imageType || 'igPost',
 	};
 	parsedRequest.images = getDefaultImages(parsedRequest.images, parsedRequest.theme);
 	return parsedRequest;

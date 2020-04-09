@@ -3,21 +3,57 @@ import { ParsedRequest } from './types';
 export function getHtml(parsedReq: ParsedRequest) {
 	const { text, imageType } = parsedReq;
 
-	let bgImgUrl, imgWidth, imgHeight;
+	let bgImgUrl, imgWidth, imgHeight, fontSize, marginTop, paddingUl, paddingli;
 	console.log(imageType);
 
-	if (imageType === 'ig_post') {
+	if (imageType === 'igPost') {
 		bgImgUrl = 'https://i.imgur.com/7ayqb7r.png';
 		imgWidth = 1080;
 		imgHeight = 1080;
-	} else if (imageType === 'ig_story') {
+		fontSize = 2.5;
+		marginTop = 300;
+		paddingUl = 40;
+		paddingli = 20;
+	} else if (imageType === 'igStory') {
 		bgImgUrl = 'https://i.imgur.com/PQnOG6o.png';
 		imgWidth = 1080;
 		imgHeight = 1920;
+		fontSize = 2.5;
+		marginTop = 300;
+		paddingUl = 40;
+		paddingli = 20;
+	} else if (imageType === 'twitter') {
+		bgImgUrl = 'https://i.imgur.com/rKNJzur.png';
+		imgWidth = 1012;
+		imgHeight = 506;
+		fontSize = 1.5;
+		marginTop = 150;
+		paddingUl = 20;
+		paddingli = 10;
+	} else if (imageType === 'facebook') {
+		bgImgUrl = 'https://i.imgur.com/PB2sraW.png';
+		imgWidth = 1200;
+		imgHeight = 630;
+		fontSize = 2;
+		marginTop = 200;
+		paddingUl = 10;
+		paddingli = 5;
+	} else if (imageType === 'linkedin') {
+		bgImgUrl = 'https://i.imgur.com/9hLDbYw.png';
+		imgWidth = 1584;
+		imgHeight = 768;
+		fontSize = 2;
+		marginTop = 150;
+		paddingUl = 20;
+		paddingli = 20;
 	} else {
 		bgImgUrl = 'https://i.imgur.com/7ayqb7r.png';
 		imgWidth = 1080;
 		imgHeight = 1080;
+		fontSize = 2.5;
+		marginTop = 300;
+		paddingUl = 40;
+		paddingli = 20;
 	}
 
 	const listArray = JSON.parse(String(text));
@@ -49,16 +85,16 @@ export function getHtml(parsedReq: ParsedRequest) {
             }
             .list ul {
                 margin: 0px auto;
-                margin-top: 300px;
+                margin-top: ${marginTop}px;
                 width: 60%;
-                padding: 40px;
+                padding: ${paddingUl}px;
                 list-style: none;
-                font-size: 2.5rem;
+                font-size: ${fontSize}rem;
                 border: 2px solid #acb8fa;
                 border-radius: 20%;
             }
             .list ul li {
-                padding: 20px 0px;
+                padding: ${paddingli}px 0px;
             }
         </style>
         <body>

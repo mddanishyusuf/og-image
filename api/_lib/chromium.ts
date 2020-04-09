@@ -16,12 +16,21 @@ async function getPage(isDev: boolean) {
 export async function getScreenshot(html: string, type: FileType, isDev: boolean, imageType: string) {
 	let imgWidth, imgHeight;
 
-	if (imageType === 'ig_post') {
+	if (imageType === 'igPost') {
 		imgWidth = 1080;
 		imgHeight = 1080;
-	} else if (imageType === 'ig_story') {
+	} else if (imageType === 'igStory') {
 		imgWidth = 1080;
 		imgHeight = 1920;
+	} else if (imageType === 'twitter') {
+		imgWidth = 1012;
+		imgHeight = 506;
+	} else if (imageType === 'facebook') {
+		imgWidth = 1200;
+		imgHeight = 630;
+	} else if (imageType === 'linkedin') {
+		imgWidth = 1584;
+		imgHeight = 768;
 	} else {
 		imgWidth = 1080;
 		imgHeight = 1080;
