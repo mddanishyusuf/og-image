@@ -1,4 +1,6 @@
 import { ParsedRequest } from './types';
+const twemoji = require('twemoji');
+const emojify = (text: string) => twemoji.parse(text);
 
 export function getHtml(parsedReq: ParsedRequest) {
 	const { text, imageType } = parsedReq;
@@ -94,7 +96,14 @@ export function getHtml(parsedReq: ParsedRequest) {
             }
             .list ul li {
                 padding: ${paddingli}px 0px;
-            }
+	    }
+	    img.emoji {
+		height: 1em;
+		width: 1em;
+		margin: 0 .05em 0 .1em;
+		vertical-align: -0.1em;
+	     }
+	     
         </style>
         <body>
             <div class="list">
@@ -109,5 +118,5 @@ export function getHtml(parsedReq: ParsedRequest) {
 }
 
 function getItem(item: string) {
-	return `<li>- ${item}</li>`;
+	return `<li>- ${emojify(item)}</li>`;
 }
