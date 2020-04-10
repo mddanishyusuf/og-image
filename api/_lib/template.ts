@@ -57,7 +57,6 @@ export function getHtml(parsedReq: ParsedRequest) {
 	}
 
 	const listArray = JSON.parse(text);
-	console.log(imgWidth, imgHeight);
 	return `<!DOCTYPE html>
     <html>
         <meta charset="utf-8" />
