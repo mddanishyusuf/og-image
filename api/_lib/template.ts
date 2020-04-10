@@ -56,7 +56,7 @@ export function getHtml(parsedReq: ParsedRequest) {
 		paddingli = 20;
 	}
 
-	const listArray = JSON.parse(String(text));
+	const listArray = JSON.parse(text);
 	console.log(imgWidth, imgHeight);
 	return `<!DOCTYPE html>
     <html>
